@@ -1,4 +1,4 @@
-# Knight's Travails Continued (Part 2)
+# Knight's Travails Continued (Part 2)s
 
 **Finish Phases I & II before continuing!**
 

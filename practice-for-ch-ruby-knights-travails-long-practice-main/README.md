@@ -2,7 +2,7 @@
 
 **Read through all the instructions before beginning!**
 
-## Learning goals
+## Learning goalss
 
 By the end of the practice, you should
 
