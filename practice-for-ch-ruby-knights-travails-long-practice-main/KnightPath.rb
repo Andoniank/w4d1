@@ -1,8 +1,9 @@
 class KnightPathFinder
-
+    attr_accessor :considered_positions
+    
     def initialize(position)
         @position = position
-        @root_node = PolyTreeNode.new(position)
+        @root_node = position
         @considered_positions = [position]
     end
 
@@ -15,9 +16,10 @@ class KnightPathFinder
     end
 
     def new_move_positions(pos)
-        self.valid_moves(pos)    # return an array of valid moves from given position
-                                 # check each valid move if considered position.include?
-                                 # return positions array of new moves 
+        valid = KnightPathFinder.valid_moves(pos)    # return an array of valid moves from given position
+        valid.select!{|move| !@considered_positions.include?(move)}
+        @considered_positions += valid                        # check each valid move if considered position.include?
+        valid                         # return positions array of new moves 
     end
 
     def self.valid_moves(pos)
@@ -25,12 +27,10 @@ class KnightPathFinder
         moves = []
 
         arr.each do |position|
-            if pos[0] + position[0] < 8 || pos[0] + position[0] >= 0 || pos[1] + position[1] < 8 || pos[1] + position[1] >= 0
+            if (pos[0] + position[0] < 8 && pos[0] + position[0] >= 0) && (pos[1] + position[1] < 8 && pos[1] + position[1] >= 0)
                 moves << [pos[0] + position[0], pos[1] + position[1]]
             end
         end
-
-        @considered_positions += moves 
         return moves
     end
 end
